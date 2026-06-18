@@ -368,8 +368,13 @@ class FinanceAIHandler(BaseHTTPRequestHandler):
 
 
 def main() -> None:
-    server = ThreadingHTTPServer(("127.0.0.1", PORT), FinanceAIHandler)
-    print(f"PolarAs is running at http://127.0.0.1:{PORT}")
+    host = os.getenv("HOST", "0.0.0.0")
+    server = ThreadingHTTPServer((host, PORT), FinanceAIHandler)
+    if host == "0.0.0.0":
+        print(f"PolarAs is listening on 0.0.0.0:{PORT}")
+        print(f"Local preview: http://127.0.0.1:{PORT}")
+    else:
+        print(f"PolarAs is running at http://{host}:{PORT}")
     if (os.getenv("OPENAI_API_KEY") or "").strip():
         print("OPENAI_API_KEY detected. Online OpenAI responses are enabled.")
     else:
