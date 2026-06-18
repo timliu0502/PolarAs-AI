@@ -51,6 +51,10 @@ Open:
 http://127.0.0.1:8000
 ```
 
+## Run On Mac
+
+Move the folder to your Mac and double-click `run_mac.command`. For more details, see `MAC_SETUP.md`.
+
 ## Camp Demo Explanation
 
 1. `knowledge/finance_knowledge.json` is my corpus.
