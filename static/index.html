@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PolarAs Financial Assistant</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="sidebar" aria-label="Money profile">
+        <div class="brand-row">
+          <img class="brand-mark" src="/static/polaras-logo.svg" alt="PolarAs logo" />
+          <div>
+            <h1>PolarAs</h1>
+            <p>Financial Assistant</p>
+          </div>
+        </div>
+
+        <form id="profileForm" class="profile-form">
+          <label>
+            Monthly income
+            <input name="monthlyIncome" type="number" value="1200" min="0" step="50" />
+          </label>
+          <label>
+            Fixed expenses
+            <input name="fixedExpenses" type="number" value="650" min="0" step="50" />
+          </label>
+          <label>
+            Flexible expenses
+            <input name="flexibleExpenses" type="number" value="250" min="0" step="25" />
+          </label>
+          <label>
+            Current savings
+            <input name="currentSavings" type="number" value="500" min="0" step="50" />
+          </label>
+          <label>
+            Debt
+            <input name="debt" type="number" value="0" min="0" step="50" />
+          </label>
+          <label>
+            Goal
+            <select name="goal">
+              <option value="save for an emergency fund">Build an emergency fund</option>
+              <option value="save for college expenses">Save for college or camp costs</option>
+              <option value="pay down debt">Pay down debt</option>
+              <option value="learn beginner investing">Learn beginner investing</option>
+              <option value="save for a laptop or project">Save for a laptop or project</option>
+            </select>
+          </label>
+          <div class="split-fields">
+            <label>
+              Goal amount
+              <input name="goalAmount" type="number" value="1200" min="0" step="50" />
+            </label>
+            <label>
+              Months
+              <input name="months" type="number" value="12" min="1" max="120" />
+            </label>
+          </div>
+          <label>
+            Risk comfort
+            <select name="riskLevel">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+          </label>
+        </form>
+
+        <div class="metrics" aria-live="polite">
+          <div>
+            <span>Monthly surplus</span>
+            <strong id="surplus">$0</strong>
+          </div>
+          <div>
+            <span>Goal per month</span>
+            <strong id="target">$0</strong>
+          </div>
+          <div>
+            <span>Savings rate</span>
+            <strong id="rate">0%</strong>
+          </div>
+        </div>
+
+        <div class="bar-block" aria-label="Budget split">
+          <div class="bar-labels">
+            <span>Spent</span>
+            <span>Remaining</span>
+          </div>
+          <div class="budget-bar">
+            <span id="spentBar"></span>
+            <span id="leftBar"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="AI chat">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">RAG + OpenAI API prototype</p>
+            <h2>Turn your budget into an action plan</h2>
+          </div>
+          <div id="statusPill" class="status-pill">checking</div>
+        </header>
+
+        <section id="messages" class="messages" aria-live="polite">
+          <article class="message assistant">
+            <div class="avatar">AI</div>
+            <div class="bubble">
+              <p>Hi, I am PolarAs. You can ask: "How can I save $1,000 in 6 months?" or "Should I save first or pay down debt first?"</p>
+              <p class="note">I retrieve from a local finance knowledge base, then use a large language model to create a clearer answer.</p>
+            </div>
+          </article>
+        </section>
+
+        <aside id="sourcesPanel" class="sources-panel" aria-label="Retrieved sources">
+          <div class="panel-title">Retrieved knowledge snippets</div>
+          <div id="sourceChips" class="source-chips"></div>
+        </aside>
+
+        <form id="chatForm" class="chat-form">
+          <textarea
+            id="messageInput"
+            rows="2"
+            placeholder="Type your finance question..."
+          ></textarea>
+          <button type="submit" id="sendButton" aria-label="Send message">
+            <span>Send</span>
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

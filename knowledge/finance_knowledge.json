@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Budgeting With The 50/30/20 Rule",
+    "content": "A simple starter budget splits after-tax income into needs, wants, and saving or debt payoff. It is not a strict law. Students can adapt the percentages when rent, tuition, or family costs are high.",
+    "tags": ["budget", "cash-flow", "student"]
+  },
+  {
+    "title": "Emergency Fund Comes Before Risk",
+    "content": "Before investing aggressively, many people build a small emergency fund. A starter goal can be one month of necessary expenses, then three to six months over time. This reduces the chance of using debt when something unexpected happens.",
+    "tags": ["saving", "emergency-fund", "risk"]
+  },
+  {
+    "title": "Debt Avalanche And Snowball",
+    "content": "Debt avalanche means paying extra toward the highest interest rate first. Debt snowball means paying the smallest balance first for motivation. Both require making minimum payments on all debts.",
+    "tags": ["debt", "interest", "planning"]
+  },
+  {
+    "title": "Compound Growth",
+    "content": "Compounding means money can earn returns, and those returns can earn more returns. Time matters a lot, but future returns are uncertain and should never be guaranteed.",
+    "tags": ["investing", "compound-interest", "long-term"]
+  },
+  {
+    "title": "Risk Tolerance",
+    "content": "Risk tolerance depends on time horizon, income stability, emotional comfort, and the importance of the goal. Short-term money usually needs lower risk than long-term money.",
+    "tags": ["risk", "goals", "investing"]
+  },
+  {
+    "title": "Diversification",
+    "content": "Diversification means not relying on one company, one sector, or one asset. It can reduce some risks, but it does not remove all risk or guarantee profit.",
+    "tags": ["investing", "diversification", "risk"]
+  },
+  {
+    "title": "SMART Money Goals",
+    "content": "A useful goal is specific, measurable, achievable, relevant, and time-bound. Example: save $1,200 in 12 months for a laptop by setting aside $100 per month.",
+    "tags": ["goals", "saving", "planning"]
+  },
+  {
+    "title": "Student Money Habits",
+    "content": "Students can start with tracking spending, avoiding unnecessary high-interest debt, setting a weekly fun-money limit, and automating small savings. The habit matters more than the starting amount.",
+    "tags": ["student", "habits", "budget"]
+  },
+  {
+    "title": "Credit Score Basics",
+    "content": "Credit scores are influenced by on-time payment history, credit utilization, account age, credit mix, and recent applications. Paying on time and keeping balances low are common starting points.",
+    "tags": ["credit", "debt", "student"]
+  },
+  {
+    "title": "Needs Versus Wants",
+    "content": "Needs are expenses required for basic life and commitments. Wants are optional or flexible. A budget works better when it does not delete all wants, but gives them a clear limit.",
+    "tags": ["budget", "spending", "cash-flow"]
+  },
+  {
+    "title": "Sinking Funds",
+    "content": "A sinking fund saves a small amount each month for a known future expense, such as textbooks, travel, car repairs, or gifts. It turns surprise costs into planned costs.",
+    "tags": ["saving", "planning", "cash-flow"]
+  },
+  {
+    "title": "Financial Advice Boundary",
+    "content": "An educational AI can explain concepts, compare options, and help create a draft plan. It should not claim to be a licensed advisor, guarantee returns, or give personalized buy/sell instructions.",
+    "tags": ["safety", "ai", "financial-advice"]
+  }
+]

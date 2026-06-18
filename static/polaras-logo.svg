@@ -1,0 +1,8 @@
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">PolarAs logo</title>
+  <desc id="desc">A teal financial assistant logo with a polar star and stylized P mark.</desc>
+  <rect width="96" height="96" rx="18" fill="#087F8C"/>
+  <path d="M48 12L52.7 30.6L71 25L57.5 38.7L76 44L57.5 49.3L71 63L52.7 57.4L48 76L43.3 57.4L25 63L38.5 49.3L20 44L38.5 38.7L25 25L43.3 30.6L48 12Z" fill="#EAF8F7" opacity="0.92"/>
+  <path d="M39 30H52.5C60 30 65 34.9 65 42C65 49.2 60 54 52.5 54H47.5V66H39V30ZM52 47C55 47 56.9 45.1 56.9 42C56.9 39 55 37.1 52 37.1H47.5V47H52Z" fill="#087F8C"/>
+  <circle cx="48" cy="44" r="5.5" fill="#D49B26"/>
+</svg>
