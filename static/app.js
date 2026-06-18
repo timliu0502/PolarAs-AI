@@ -13,6 +13,21 @@ const spentBar = document.querySelector("#spentBar");
 
 const chatHistory = [];
 
+const sourcePrompts = {
+  "Budgeting With The 50/30/20 Rule": "How should I apply the 50/30/20 budget rule to my current profile?",
+  "Emergency Fund Comes Before Risk": "How much emergency fund should I build before taking investment risk?",
+  "Debt Avalanche And Snowball": "Should I use the debt avalanche or debt snowball method for my situation?",
+  "Compound Growth": "Can you explain how compound growth affects my long-term savings plan?",
+  "Risk Tolerance": "What risk level fits my goal, time horizon, and monthly budget?",
+  "Diversification": "How should a beginner think about diversification without picking specific stocks?",
+  "SMART Money Goals": "Can you turn my financial goal into a SMART goal with monthly steps?",
+  "Student Money Habits": "What student money habits should I build first based on my budget?",
+  "Credit Score Basics": "How can I improve my credit habits while staying within my budget?",
+  "Needs Versus Wants": "Can you help me separate needs and wants in my monthly spending?",
+  "Sinking Funds": "How can I use sinking funds for upcoming expenses?",
+  "Financial Advice Boundary": "What can this assistant help with, and when should I ask a professional?",
+};
+
 function money(value) {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -69,9 +84,20 @@ function addMessage(role, content) {
 function renderSources(sources) {
   sourceChips.replaceChildren();
   for (const source of sources || []) {
-    const chip = document.createElement("span");
+    const chip = document.createElement("button");
+    const prompt = sourcePrompts[source.title] || `Tell me more about ${source.title}.`;
+
+    chip.type = "button";
     chip.className = "source-chip";
     chip.textContent = source.title;
+    chip.title = `Fill question: ${prompt}`;
+    chip.setAttribute("aria-label", `Fill the chat input with a question about ${source.title}`);
+    chip.addEventListener("click", () => {
+      messageInput.value = prompt;
+      messageInput.focus();
+      messageInput.setSelectionRange(messageInput.value.length, messageInput.value.length);
+    });
+
     sourceChips.append(chip);
   }
 }
