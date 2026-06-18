@@ -12,6 +12,7 @@ const rateEl = document.querySelector("#rate");
 const spentBar = document.querySelector("#spentBar");
 
 const chatHistory = [];
+let activeChatController = null;
 
 const sourcePrompts = {
   "Budgeting With The 50/30/20 Rule": "How should I apply the 50/30/20 budget rule to my current profile?",
@@ -70,7 +71,15 @@ function addMessage(role, content) {
 
   const avatar = document.createElement("div");
   avatar.className = "avatar";
-  avatar.textContent = role === "user" ? "You" : "AI";
+  if (role === "assistant") {
+    avatar.classList.add("assistant-avatar");
+    const logo = document.createElement("img");
+    logo.src = "/static/polaras-logo.svg";
+    logo.alt = "PolarAs";
+    avatar.append(logo);
+  } else {
+    avatar.textContent = "You";
+  }
 
   const bubble = document.createElement("div");
   bubble.className = "bubble";
@@ -118,19 +127,28 @@ profileForm.addEventListener("input", updateMetrics);
 
 chatForm.addEventListener("submit", async (event) => {
   event.preventDefault();
+
+  if (activeChatController) {
+    activeChatController.abort();
+    return;
+  }
+
   const message = messageInput.value.trim();
   if (!message) return;
 
+  activeChatController = new AbortController();
   messageInput.value = "";
   addMessage("user", message);
   chatHistory.push({ role: "user", content: message });
-  sendButton.disabled = true;
-  sendButton.textContent = "Thinking";
+  sendButton.classList.add("is-loading");
+  sendButton.setAttribute("aria-label", "Stop generating");
+  sendButton.querySelector("span:last-child").textContent = "Stop";
 
   try {
     const response = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      signal: activeChatController.signal,
       body: JSON.stringify({
         message,
         profile: getProfile(),
@@ -152,10 +170,16 @@ chatForm.addEventListener("submit", async (event) => {
       console.warn("OpenAI fallback reason:", data.apiError);
     }
   } catch (error) {
-    addMessage("assistant", `Something went wrong: ${error.message}`);
+    if (error.name === "AbortError") {
+      addMessage("assistant", "Stopped. You can edit your question and try again.");
+    } else {
+      addMessage("assistant", `Something went wrong: ${error.message}`);
+    }
   } finally {
-    sendButton.disabled = false;
-    sendButton.textContent = "Send";
+    activeChatController = null;
+    sendButton.classList.remove("is-loading");
+    sendButton.setAttribute("aria-label", "Send message");
+    sendButton.querySelector("span:last-child").textContent = "Send";
     messageInput.focus();
   }
 });

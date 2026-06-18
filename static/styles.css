@@ -285,12 +285,24 @@ h2 {
   color: #344054;
   font-size: 0.78rem;
   font-weight: 800;
+  overflow: hidden;
 }
 
 .user .avatar {
   grid-column: 2;
   background: var(--teal);
   color: white;
+}
+
+.assistant-avatar {
+  background: transparent;
+  box-shadow: 0 7px 18px rgba(8, 127, 140, 0.18);
+}
+
+.assistant-avatar img {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .bubble {
@@ -370,6 +382,10 @@ button {
   color: white;
   font-weight: 800;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 button:hover {
@@ -379,6 +395,34 @@ button:hover {
 button:disabled {
   cursor: wait;
   opacity: 0.65;
+}
+
+.button-spinner {
+  width: 18px;
+  height: 18px;
+  display: none;
+  border: 2px solid rgba(255, 255, 255, 0.42);
+  border-top-color: white;
+  border-radius: 999px;
+}
+
+#sendButton.is-loading {
+  background: var(--coral);
+}
+
+#sendButton.is-loading:hover {
+  background: #c95746;
+}
+
+#sendButton.is-loading .button-spinner {
+  display: inline-block;
+  animation: spin 800ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 860px) {

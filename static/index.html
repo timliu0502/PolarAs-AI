@@ -106,7 +106,9 @@
 
         <section id="messages" class="messages" aria-live="polite">
           <article class="message assistant">
-            <div class="avatar">AI</div>
+            <div class="avatar assistant-avatar">
+              <img src="/static/polaras-logo.svg" alt="PolarAs" />
+            </div>
             <div class="bubble">
               <p>Hi, I am PolarAs. You can ask: "How can I save $1,000 in 6 months?" or "Should I save first or pay down debt first?"</p>
               <p class="note">I retrieve from a local finance knowledge base, then use a large language model to create a clearer answer.</p>
@@ -126,6 +128,7 @@
             placeholder="Type your finance question..."
           ></textarea>
           <button type="submit" id="sendButton" aria-label="Send message">
+            <span class="button-spinner" aria-hidden="true"></span>
             <span>Send</span>
           </button>
         </form>
